@@ -1,7 +1,9 @@
-{% extends 'base.html.twig' %}
+{% extends 'base.html.twig' %} {% block title %}Liste des entreprises{% endblock
+%} {% block body %}
+<h1>Liste des entreprises</h1>
 
-{% block title %}Liste des entreprises{% endblock %}
+{% for entreprise in entreprises %}
+<b>{{ entreprise }}</b>
 
-{% block body %}
-    <h1>Liste des entreprises</h1>
-{% endblock %}
+<br />
+{% endfor %} {% endblock %}
