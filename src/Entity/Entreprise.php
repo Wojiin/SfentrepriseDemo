@@ -34,6 +34,7 @@ class Entreprise
      * @var Collection<int, Employe>
      */
     #[ORM\OneToMany(targetEntity: Employe::class, mappedBy: 'entreprise', orphanRemoval: true)]
+    #[ORM\OrderBy(["nom" => "ASC"])]
     private Collection $employes;
 
     public function __construct()
@@ -136,7 +137,11 @@ class Entreprise
         return $this;
     }
 
+    public function getAdresseComplete(): ?string {
+        return $this->adresse." ".$this->codePostal. " ".$this->ville;
+    }
+
     public function __toString() {
-        return $this->raisonSociale." (".$this->codePostal." ".$this->ville.")";
+        return $this->raisonSociale;
     }
 }

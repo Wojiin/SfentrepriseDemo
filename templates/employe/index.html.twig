@@ -1,8 +1,12 @@
 {% extends 'base.html.twig' %} {% block title %}Liste des employés{% endblock %}
 {% block body %}
 <h1>Liste des employés</h1>
+<a class="btn btn-success" href="{{path("new_employe")}}">Ajouter un employé</a>
+<br>
 
 {% for employe in employes %}
-{{ employe }}<br />
-
+<a href="{{path("show_employe", {"id": employe.id})}}">{{ employe }} ({{ employe.entreprise.raisonSociale }})</a>
+<a class="btn btn-warning" href="{{path("edit_employe",{"id": employe.id})}}">Edit</a>
+<a class="btn btn-danger" href="{{path("delete_employe",{"id": employe.id})}}">Supp</a>
+<br />
 {% endfor %} {% endblock %}
